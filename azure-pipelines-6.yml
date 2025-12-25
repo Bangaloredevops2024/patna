@@ -1,0 +1,19 @@
+trigger: none
+
+pool:
+  name: my_agent
+
+steps:
+- checkout: self
+  fetchDepth: 1
+
+- script: |
+    echo "===== Files ====="
+    dir
+    echo "===== TFVARS ====="
+    type dev.tfvars
+    terraform init
+    terraform validate
+    terraform plan -var-file="dev.tfvars"
+  workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+  displayName: 'Terraform Init Validate Plan'
