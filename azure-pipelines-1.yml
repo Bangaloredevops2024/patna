@@ -1,7 +1,7 @@
 trigger: none
 
-pool: 
--agent_pool
+pool: my_agent
+
 
 steps:
 
