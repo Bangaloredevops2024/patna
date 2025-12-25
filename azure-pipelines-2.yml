@@ -13,3 +13,17 @@ steps:
     backendAzureRmStorageAccountName: 'storagedev12'
     backendAzureRmContainerName: 'tfstate'
     backendAzureRmKey: 'terraform.tfstate'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
+    environmentServiceNameAzureRM: 'new_svc'
+    environmentAzureRmOverrideSubscriptionID: 'ca2d764d-6af0-4ecc-8eaf-76bd3b666806'
