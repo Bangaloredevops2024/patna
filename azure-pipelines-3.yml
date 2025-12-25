@@ -1,0 +1,14 @@
+trigger: none
+
+pool:
+  name: my_agent
+
+steps:
+- checkout: self
+  fetchDepth: 1
+
+- script: |
+    terraform init
+    terraform validate
+    terraform plan
+  workingDirectory: '$(System.DefaultWorkingDirectory)/environment/dev'
