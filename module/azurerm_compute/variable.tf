@@ -1,0 +1,7 @@
+variable "nics" {
+  
+}
+
+variable "vms" {
+  
+}

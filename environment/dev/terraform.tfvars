@@ -47,11 +47,41 @@ subnets = {
 
 public_ip = {
   "pip" = {
-    name = "dev_pip"
-    location = "westus"
+    name                = "dev_pip"
+    location            = "westus"
     resource_group_name = "rg_dev"
-    allocation_method = "Dynamic"
+    allocation_method   = "Dynamic"
   }
 }
 
+nics = {
+  nic1 = {
+    name                = "frontend-nic"
+    location            = "westus"
+    resource_group_name = "rg_dev"
+    # subnet_id            = module.subnet.subnet_ids["frontend_subnet"]
+    # public_ip_id         = module.public_ip.public_ip_ids["frontend"]
+  }
+
+  nic2 = {
+    name                = "backend-nic"
+    location            = "westus"
+    resource_group_name = "rg_dev"
+    # subnet_id            = module.subnet.subnet_ids["backend_subnet"]
+    # public_ip_id         = null
+  }
+}
+
+
+vms = {
+  "vm1" = {
+    name                = "frontend_vm"
+    location            = "westus"
+    resource_group_name = "rg_dev"
+    size                = "Standard_B1s"
+    admin_username      = "username"
+    admin_password      = "Password@1234"
+
+  }
+}
 
