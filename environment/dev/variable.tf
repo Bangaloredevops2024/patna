@@ -38,16 +38,38 @@ variable "subnets" {
 
 variable "public_ip" {
   type = map(object({
-    name = string
-    location = string
+    name                = string
+    location            = string
     resource_group_name = string
-    allocation_method = string
+    allocation_method   = string
   }))
-  
+
 }
 
 
+variable "nics" {
+  type = map(object({
+    name                = string
+    location            = string
+    resource_group_name = string
+    # subnet_id            = string
+    # public_ip_id         = optional(string)
+  }))
+}
 
+
+variable "vms" {
+  type = map(object({
+    name                = string
+    resource_group_name = string
+    location            = string
+    size                = string
+    admin_username      = string
+    admin_password      = string
+
+  }))
+
+}
 
 
 
